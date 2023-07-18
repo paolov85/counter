@@ -1,0 +1,24 @@
+button {
+    margin-top: 0.5em !important;
+}
+
+.firstLine {
+    height: 10rem !important;
+}
+
+#oneDown, #oneUp {
+    height: 70%;
+}
+
+#fiveDown, #fiveUp {
+    height: 20%;
+}
+
+#reset button {
+    height: 100%;
+}
+
+.counter {
+    max-width: 700px;
+    min-width: 250px;
+}
