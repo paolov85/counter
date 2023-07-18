@@ -12,13 +12,11 @@ window.addEventListener('DOMContentLoaded', function () {
     function somma() {
 
         toAddId = this.id
-        console.log(toAddId);
 
         switch (toAddId) {
 
             case 'oneDown':
                 toAdd = -1;
-                console.log(toAdd);
                 break;
 
             case 'fiveDown':
@@ -34,7 +32,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 break;
 
             case 'reset':
-                reset();
+                result = 0;
+                display.innerHTML = result;
                 return;
 
         };
@@ -43,11 +42,6 @@ window.addEventListener('DOMContentLoaded', function () {
         display.innerHTML = result;
 
     }
-
-    function reset () {
-        display.innerHTML= 0;
-    }
-
 
 
 });
