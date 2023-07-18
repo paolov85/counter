@@ -31,7 +31,8 @@ window.addEventListener('DOMContentLoaded', function() {
     };
 
     function reset () {
-        display.innerHTML= 0;
+        result=0
+        display.innerHTML= result;
     }
 
     oneDown.addEventListener('click', somma_1);
