@@ -1,9 +1,9 @@
 window.addEventListener('DOMContentLoaded', function () {
 
 
+    let toSumm = document.getElementsByClassName('toSumm');
     let display = document.getElementById('display');
     let result = 0;
-    let toSumm = document.getElementsByClassName('toSumm');
 
     for (i = 0; i < toSumm.length; i++) {
         toSumm[i].addEventListener('click', somma)
@@ -33,13 +33,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
             case 'reset':
                 result = 0;
-                display.innerHTML = result;
+                display.innerHTML = `<p>${result}</p>`;
                 return;
 
         };
 
-        result = result + toAdd;
-        display.innerHTML = result;
+        result += toAdd;
+        display.innerHTML = `<p>${result}</p>`;
 
     }
 
