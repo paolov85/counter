@@ -1,47 +1,52 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 
 
-    let oneDown = document.getElementById ('oneDown');
-    let fiveDown = document.getElementById ('fiveDown');
-    let oneUp = document.getElementById ('oneUp');
-    let fiveUp = document.getElementById ('fiveUp');
     let display = document.getElementById('display');
-    let resetB = document.getElementById('reset');
     let result = 0;
-   
-    
-    function somma_1 () {
-        result = result -1 ;
-        display.innerHTML= result;
-    };
+    let toSumm = document.getElementsByClassName('toSumm');
 
-    function somma_5 () {
-        result = result - 5;
-        display.innerHTML= result;
-    };
+    for (i = 0; i < toSumm.length; i++) {
+        toSumm[i].addEventListener('click', somma)
+    }
 
-    function somma1 () {
-        result = result +1;
-        display.innerHTML= result;
-    };
+    function somma() {
 
-    function somma5 () {
-        result = result + 5;
-        display.innerHTML= result;
-    };
+        toAddId = this.id
+        console.log(toAddId);
+
+        switch (toAddId) {
+
+            case 'oneDown':
+                toAdd = -1;
+                console.log(toAdd);
+                break;
+
+            case 'fiveDown':
+                toAdd = -5;
+                break;
+
+            case 'oneUp':
+                toAdd = 1;
+                break;
+
+            case 'fiveUp':
+                toAdd = 5;
+                break;
+
+            case 'reset':
+                reset();
+                return;
+
+        };
+
+        result = result + toAdd;
+        display.innerHTML = result;
+
+    }
 
     function reset () {
         display.innerHTML= 0;
     }
-
-    oneDown.addEventListener('click', somma_1);
-    fiveDown.addEventListener('click', somma_5);
-    oneUp.addEventListener('click', somma1);
-    fiveUp.addEventListener('click', somma5);
-    resetB.addEventListener('click', reset);
-    
-
-
 
 
 
