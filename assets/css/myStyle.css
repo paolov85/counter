@@ -28,6 +28,7 @@ bg {
 #display {
     background-color: #003049;
     max-width: 700px;
+    margin-top: 0.5rem !important;
     border-radius: 25px;
     color: aliceblue;
     font-family: 'Space Mono', monospace;
