@@ -1,24 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+
+body {
+    background-color: #efede0;
+    
+}
+
+main {
+    height: 50vh;
+}
+
 button {
     margin-top: 0.5em !important;
 }
 
+bg {
+    margin: 5em 8em 5em 8em;
+}
+
+
 .firstLine {
-    height: 10rem !important;
+    /* height: 10rem !important; */
+    /* height: fit-content !important; */
+    margin-bottom: 2rem
+}
+
+#display {
+    background-color: #003049;
+    max-width: 700px;
+    margin-top: 0.5rem !important;
+    border-radius: 25px;
+    color: aliceblue;
+    font-family: 'Space Mono', monospace;
+    font-size: 5rem;
 }
 
 #oneDown, #oneUp {
-    height: 70%;
+    background-color: #fcbf49;
+    height: 80%;
+    border-color: #003049;
 }
 
 #fiveDown, #fiveUp {
-    height: 20%;
+    background-color: #f77f00;
+    height: 30%;
+    border-color: #003049;
+}
+
+#oneDown img, #oneUp img {
+    height: 4rem;
+}
+
+#fiveDown img, #fiveUp img {
+    height: 1.8rem;
 }
 
 #reset button {
+    background-color: #d62828;
     height: 100%;
+    border-color: #003049;
 }
 
-.counter {
+.counter, .options {
     max-width: 700px;
     min-width: 250px;
 }
+
+@media screen and (min-width: 768px) {
+    #oneDown, #oneUp {
+        height: 70%;
+    }
+    
+    #fiveDown, #fiveUp {
+        height: 30%;
+    }
+    
+  }

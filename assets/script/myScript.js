@@ -1,49 +1,47 @@
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
 
 
-    let oneDown = document.getElementById ('oneDown');
-    let fiveDown = document.getElementById ('fiveDown');
-    let oneUp = document.getElementById ('oneUp');
-    let fiveUp = document.getElementById ('fiveUp');
+    let toSumm = document.getElementsByClassName('toSumm');
     let display = document.getElementById('display');
-    let resetB = document.getElementById('reset');
     let result = 0;
-   
-    
-    function somma_1 () {
-        result = result -1 ;
-        display.innerHTML= result;
-    };
 
-    function somma_5 () {
-        result = result - 5;
-        display.innerHTML= result;
-    };
-
-    function somma1 () {
-        result = result +1;
-        display.innerHTML= result;
-    };
-
-    function somma5 () {
-        result = result + 5;
-        display.innerHTML= result;
-    };
-
-    function reset () {
-        result=0
-        display.innerHTML= result;
+    for (i = 0; i < toSumm.length; i++) {
+        toSumm[i].addEventListener('click', somma)
     }
 
-    oneDown.addEventListener('click', somma_1);
-    fiveDown.addEventListener('click', somma_5);
-    oneUp.addEventListener('click', somma1);
-    fiveUp.addEventListener('click', somma5);
-    resetB.addEventListener('click', reset);
-    
+    function somma() {
 
+        toAddId = this.id
 
+        switch (toAddId) {
 
+            case 'oneDown':
+                toAdd = -1;
+                break;
+
+            case 'fiveDown':
+                toAdd = -5;
+                break;
+
+            case 'oneUp':
+                toAdd = 1;
+                break;
+
+            case 'fiveUp':
+                toAdd = 5;
+                break;
+
+            case 'reset':
+                result = 0;
+                display.innerHTML = `<p>${result}</p>`;
+                return;
+
+        };
+
+        result += toAdd;
+        display.innerHTML = `<p>${result}</p>`;
+
+    }
 
 
 });
