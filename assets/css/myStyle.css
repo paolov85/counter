@@ -57,6 +57,13 @@ bg {
 
 #reset button {
     background-color: #d62828;
+}
+
+#save button {
+    background-color: #fcbf49;
+}
+
+#reset button, #save button {
     height: 100%;
     border-color: #003049;
 }

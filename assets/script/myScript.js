@@ -36,6 +36,12 @@ window.addEventListener('DOMContentLoaded', function () {
                 display.innerHTML = `<p>${result}</p>`;
                 return;
 
+            case 'save':
+                console.log(result)
+                return;
+
+
+
         };
 
         result += toAdd;
