@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
+:root {
+    --light:#efede0;
+    --yellow: #fcbf49;
+    --orange: #f77f00;
+    --red: #d62828;
+    --dark-blue: #003049;
+}
 
 body {
-    background-color: #efede0;
+    background-color: var(--light);
     
 }
 
@@ -26,7 +33,7 @@ bg {
 }
 
 #display {
-    background-color: #003049;
+    background-color: var(--dark-blue);
     max-width: 700px;
     margin-top: 0.5rem !important;
     border-radius: 25px;
@@ -36,15 +43,15 @@ bg {
 }
 
 #oneDown, #oneUp {
-    background-color: #fcbf49;
+    background-color: var(--yellow);
     height: 80%;
-    border-color: #003049;
+    border-color: var(--dark-blue);
 }
 
 #fiveDown, #fiveUp {
-    background-color: #f77f00;
+    background-color: var(--orange);
     height: 30%;
-    border-color: #003049;
+    border-color: var(--dark-blue);
 }
 
 #oneDown img, #oneUp img {
@@ -56,16 +63,9 @@ bg {
 }
 
 #reset button {
-    background-color: #d62828;
-}
-
-#save button {
-    background-color: #fcbf49;
-}
-
-#reset button, #save button {
+    background-color: var(--red);
     height: 100%;
-    border-color: #003049;
+    border-color: var(--dark-blue);
 }
 
 .counter, .options {
