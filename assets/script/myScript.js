@@ -38,12 +38,16 @@ window.addEventListener('DOMContentLoaded', function () {
             case 'reset':
                 result = 0;
                 displayInner(result);
+                listDelete();
+                deleteBtn();
                 return;
 
             case 'save':
                 ad++;
+                console.log(ad);
                 save();
                 createBtn();
+                reset();
                 return;
 
         };
@@ -67,13 +71,31 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!result == 0 && ad == 2) {
             let summButton = document.createElement("button");
             summButton.setAttribute("class", "btn btn-primary");
+            summButton.setAttribute("id", "totSumm");
             let summButtonText = document.createTextNode('Fai la Somma');
             summButton.appendChild(summButtonText);
-            memo.appendChild(summButton);
+            memo.prepend(summButton);
         }
+    }
+
+    function listDelete () {
+        toDelete = Array.from(document.getElementsByClassName('memRow'));
+        let toDeleteN = toDelete.length;
+        for (i=0; i < toDeleteN; i++) {
+            toDelete[i].remove();
+        }
+    }
+
+    function deleteBtn () {
+        document.getElementById('totSumm').remove();
+       
     }
 
     function displayInner(result) {
         display.innerHTML = `<p>${result}</p>`;
+    }
+
+    function reset () {
+        
     }
 });
