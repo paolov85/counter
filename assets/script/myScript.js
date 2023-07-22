@@ -36,15 +36,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 break;
 
             case 'reset':
-                result = 0;
-                displayInner(result);
+                ad = 0;
+                reset();
                 listDelete();
                 deleteBtn();
                 return;
 
             case 'save':
-                ad++;
-                console.log(ad);
                 save();
                 createBtn();
                 reset();
@@ -59,6 +57,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function save() {
         if (!result == 0) {
+            ad++;
             let memoAdd = document.createElement("div");
             memoAdd.setAttribute("class", "memRow col-3");
             let memoAddText = document.createTextNode(result);
@@ -72,6 +71,7 @@ window.addEventListener('DOMContentLoaded', function () {
             let summButton = document.createElement("button");
             summButton.setAttribute("class", "btn btn-primary");
             summButton.setAttribute("id", "totSumm");
+            summButton.addEventListener('click', total);
             let summButtonText = document.createTextNode('Fai la Somma');
             summButton.appendChild(summButtonText);
             memo.prepend(summButton);
@@ -88,7 +88,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function deleteBtn () {
         document.getElementById('totSumm').remove();
-       
     }
 
     function displayInner(result) {
@@ -96,6 +95,22 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function reset () {
+        result = 0;
+        displayInner(result);
+    }
+
+    function total(){
+        totalNum = 0;
+        toTotal = Array.from(document.getElementsByClassName('memRow'));
+        for (i = 0; i < toTotal.length; i++) {
+            totalNum = totalNum + parseInt(toTotal[i].innerText);
+            displayInner(totalNum);
+            listDelete();
+            deleteBtn();
+            console.log(ad);
+            ad = 0;
+            console.log(ad);
         
+        }
     }
 });
