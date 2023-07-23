@@ -32,6 +32,14 @@ bg {
     margin-bottom: 2rem
 }
 
+.memRow {
+    background-color: var(--yellow);
+    border-radius: 100px;
+    margin-top: 5px;
+    text-align: center;
+    color:  var(--dark-blue);
+}
+
 #display {
     background-color: var(--dark-blue);
     max-width: 700px;
@@ -62,8 +70,14 @@ bg {
     height: 1.8rem;
 }
 
-#save button, #reset button, #memo button {
+#save button, #reset button {
     background-color: var(--red);
+    height: 100%;
+    border-color: var(--dark-blue);
+}
+
+#memo button {
+    background-color: var(--orange);
     height: 100%;
     border-color: var(--dark-blue);
 }

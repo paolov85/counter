@@ -47,14 +47,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 createBtn();
                 reset();
                 return;
-
         };
 
         result += toAdd;
         displayInner(result);
-
     }
 
+    //la funzione 'save' verifica che la var result sia popolata, in caso positivo crea un div nel quale salvare il valore che attualmetne è visualizzato sul display e lo appende nella corretta posizione
     function save() {
         if (!result == 0) {
             ad++;
@@ -66,6 +65,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    //la funzione 'createBtn' controlla che la var result sia popolata, in caso positivo, crea il button Fai la Somma con i relativi attributi e lo appende nella corretta posizione
     function createBtn() {
         if (!result == 0 && ad == 2) {
             let summButton = document.createElement("button");
@@ -78,39 +78,41 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function listDelete () {
+    //la funzione 'listDelete' elimina gli elementi salvati, dopo averli inseriti in un array 
+    function listDelete() {
         toDelete = Array.from(document.getElementsByClassName('memRow'));
-        let toDeleteN = toDelete.length;
-        for (i=0; i < toDeleteN; i++) {
+        for (i = 0; i < toDelete.length; i++) {
             toDelete[i].remove();
         }
     }
 
-    function deleteBtn () {
-        document.getElementById('totSumm').remove();
+    //la funzione 'deleteBtn' elimina il pulsante Fai la Somma
+    function deleteBtn() {
+        toDeleteBtn = document.getElementById('totSumm');
+        toDeleteBtn ? toDeleteBtn.remove() : null;
     }
 
+    //la funzione 'displayInner' è dedicata a visualizzare il risultato nel display dell'applicazione
     function displayInner(result) {
         display.innerHTML = `<p>${result}</p>`;
     }
 
-    function reset () {
+    //la funzione 'reset' azzera il display dell'applicazione
+    function reset() {
         result = 0;
         displayInner(result);
     }
 
-    function total(){
-        totalNum = 0;
+    //la funzione 'total' popola un array con tutti i valori salvati, li somma e visualizza il risultato nel display dell'app, per poi cancellare suddetti valori ed il relativo pulsante Fai la Somma
+    function total() {
+        let totalNum = 0;
         toTotal = Array.from(document.getElementsByClassName('memRow'));
         for (i = 0; i < toTotal.length; i++) {
-            totalNum = totalNum + parseInt(toTotal[i].innerText);
-            displayInner(totalNum);
-            listDelete();
-            deleteBtn();
-            console.log(ad);
-            ad = 0;
-            console.log(ad);
-        
+            totalNum = totalNum + Number(toTotal[i].innerText);
         }
+        displayInner(totalNum);
+        listDelete();
+        deleteBtn();
+        ad = 0;
     }
 });
