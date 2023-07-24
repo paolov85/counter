@@ -38,6 +38,8 @@ bg {
     margin-top: 5px;
     text-align: center;
     color:  var(--dark-blue);
+    border: solid 1px;
+    border-color: var(--dark-blue);
 }
 
 #display {

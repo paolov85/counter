@@ -7,13 +7,13 @@ window.addEventListener('DOMContentLoaded', function () {
     let result = 0;
     let ad = 0;
 
-    //tramite il ciclo for aggiungo un evento click ad ogni pulsante, che lancia la funzione 'somma'
+    //tramite il ciclo for aggiungo un evento click ad ogni pulsante, che lancia la funzione 'clicked'
     for (i = 0; i < toSumm.length; i++) {
-        toSumm[i].addEventListener('click', somma)
+        toSumm[i].addEventListener('click', clicked)
     }
 
-    //la funzione 'somma' ottiene l'id del pulsante cliccato ed in base ad esso assegna un diverso valore da aggiungere/sottrarre al totale, mostrandolo poi sul display
-    function somma() {
+    //la funzione 'clicked' ottiene l'id del pulsante cliccato ed in base ad esso assegna un diverso valore da aggiungere/sottrarre al totale, mostrandolo poi sul display
+    function clicked() {
 
         toAddId = this.id
 
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', function () {
         if (!result == 0) {
             ad++;
             let memoAdd = document.createElement("div");
-            memoAdd.setAttribute("class", "memRow col-3");
+            memoAdd.setAttribute("class", "memRow col-2");
             let memoAddText = document.createTextNode(result);
             memo.appendChild(memoAdd);
             memoAdd.appendChild(memoAddText);
