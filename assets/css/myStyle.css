@@ -1,22 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
 
 :root {
-    --light:#efede0;
+    -ms-touch-action: pan-x pan-y;
+    touch-action: pan-x pan-y;
+    height: 100%;
+
+    --light: #efede0;
     --yellow: #fcbf49;
     --orange: #f77f00;
     --red: #d62828;
     --dark-blue: #003049;
-
 }
-    :root {
-        -ms-touch-action: pan-x pan-y;
-            touch-action: pan-x pan-y;
-        height: 100% 
-    }
-    
+
 body {
     background-color: var(--light);
-    
+
 }
 
 main {
@@ -43,7 +41,7 @@ bg {
     border-radius: 100px;
     margin-top: 5px;
     text-align: center;
-    color:  var(--dark-blue);
+    color: var(--dark-blue);
     border: solid 1px;
     border-color: var(--dark-blue);
 }
@@ -58,27 +56,32 @@ bg {
     font-size: 5rem;
 }
 
-#oneDown, #oneUp {
+#oneDown,
+#oneUp {
     background-color: var(--yellow);
     height: 80%;
     border-color: var(--dark-blue);
 }
 
-#fiveDown, #fiveUp {
+#fiveDown,
+#fiveUp {
     background-color: var(--orange);
     height: 30%;
     border-color: var(--dark-blue);
 }
 
-#oneDown img, #oneUp img {
+#oneDown img,
+#oneUp img {
     height: 4rem;
 }
 
-#fiveDown img, #fiveUp img {
+#fiveDown img,
+#fiveUp img {
     height: 1.8rem;
 }
 
-#save button, #reset button {
+#save button,
+#reset button {
     background-color: var(--red);
     height: 100%;
     border-color: var(--dark-blue);
@@ -90,18 +93,22 @@ bg {
     border-color: var(--dark-blue);
 }
 
-.counter, .options {
+.counter,
+.options {
     max-width: 700px;
     min-width: 250px;
 }
 
 @media screen and (min-width: 768px) {
-    #oneDown, #oneUp {
+
+    #oneDown,
+    #oneUp {
         height: 70%;
     }
-    
-    #fiveDown, #fiveUp {
+
+    #fiveDown,
+    #fiveUp {
         height: 30%;
     }
-    
-  }
+
+}
