@@ -60,8 +60,8 @@ window.addEventListener('DOMContentLoaded', function () {
     function save() {
         if (!result == 0) {
             ad++;
-            const memoAdd = document.createElement("div");
-            memoAdd.setAttribute("class", "memRow col-2");
+            const memoAdd = document.createElement('div');
+            memoAdd.setAttribute('class', 'memRow col-2');
             const memoAddText = document.createTextNode(result);
             memo.appendChild(memoAdd);
             memoAdd.appendChild(memoAddText);
@@ -71,9 +71,9 @@ window.addEventListener('DOMContentLoaded', function () {
     //la funzione 'createBtn' controlla che la var result sia popolata, in caso positivo, crea il button Fai la Somma con i relativi attributi e lo appende nella corretta posizione
     function createBtn() {
         if (!result == 0 && ad == 2) {
-            const summButton = document.createElement("button");
-            summButton.setAttribute("class", "btn btn-primary");
-            summButton.setAttribute("id", "totSumm");
+            const summButton = document.createElement('button');
+            summButton.setAttribute('class', 'btn btn-primary');
+            summButton.setAttribute('id', 'totSumm');
             summButton.addEventListener('click', total);
             const summButtonText = document.createTextNode('Fai la Somma');
             summButton.appendChild(summButtonText);
@@ -123,11 +123,7 @@ window.addEventListener('DOMContentLoaded', function () {
     function structure() {
         divDisplay();
         divDecrease()
-        btnOneDown();
-        btnFiveDown();
         divIncrease()
-        btnOneUp();
-        btnFiveUp();
         btnSave();
         btnReset();
     }
@@ -149,6 +145,23 @@ window.addEventListener('DOMContentLoaded', function () {
         const divDecrease = document.createElement('div');
         divDecrease.setAttribute('class', 'decrease col-6 col-md-3 order-md-1');
         firstLine.appendChild(divDecrease);
+
+        const decrease = document.querySelector('.decrease');
+        const btnOneDown = document.createElement('button');
+        btnOneDown.setAttribute('class', 'toSumm btn w-100');
+        btnOneDown.setAttribute('id', 'oneDown');
+        const btnOneDownImg = document.createElement('img');
+        btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
+        btnOneDown.appendChild(btnOneDownImg);
+        decrease.appendChild(btnOneDown);
+        
+        const btnFiveDown = document.createElement('button');
+        btnFiveDown.setAttribute('class', 'toSumm btn w-100');
+        btnFiveDown.setAttribute('id', 'fiveDown');
+        const btnFiveDownImg = document.createElement('img');
+        btnFiveDownImg.setAttribute('src', 'assets/img/fiveDownn.SVG');
+        btnFiveDown.appendChild(btnFiveDownImg);
+        decrease.appendChild(btnFiveDown);
     }
 
     function divIncrease() {
@@ -156,59 +169,76 @@ window.addEventListener('DOMContentLoaded', function () {
         const divIncrease = document.createElement('div');
         divIncrease.setAttribute('class', 'increase col-6 col-md-3 order-md-3');
         firstLine.appendChild(divIncrease);
-    }
 
-    function btnOneDown() {
-        const decrease = document.querySelector('.decrease');
-        const btnOneDown = document.createElement("button");
-        btnOneDown.setAttribute("class", "toSumm btn w-100");
-        btnOneDown.setAttribute("id", "oneDown");
-        const btnOneDownImg = document.createElement("img");
-        btnOneDownImg.setAttribute("src", "assets/img/down.SVG");
-        btnOneDown.appendChild(btnOneDownImg);
-        decrease.appendChild(btnOneDown);
-    }
-
-    function btnFiveDown() {
-        const decrease = document.querySelector('.decrease');
-        const btnFiveDown = document.createElement("button");
-        btnFiveDown.setAttribute("class", "toSumm btn w-100");
-        btnFiveDown.setAttribute("id", "fiveDown");
-        const btnFiveDownImg = document.createElement("img");
-        btnFiveDownImg.setAttribute("src", "assets/img/fiveDownn.SVG");
-        btnFiveDown.appendChild(btnFiveDownImg);
-        decrease.appendChild(btnFiveDown);
-    }
-
-    function btnOneUp() {
         const decrease = document.querySelector('.increase');
-        const btnOneUp = document.createElement("button");
-        btnOneUp.setAttribute("class", "toSumm btn w-100");
-        btnOneUp.setAttribute("id", "oneUp");
-        const btnOneUpImg = document.createElement("img");
-        btnOneUpImg.setAttribute("src", "assets/img/Up.SVG");
+        const btnOneUp = document.createElement('button');
+        btnOneUp.setAttribute('class', 'toSumm btn w-100');
+        btnOneUp.setAttribute('id', 'oneUp');
+        const btnOneUpImg = document.createElement('img');
+        btnOneUpImg.setAttribute('src', 'assets/img/Up.SVG');
         btnOneUp.appendChild(btnOneUpImg);
         decrease.appendChild(btnOneUp);
-    }
 
-    function btnFiveUp() {
-        const decrease = document.querySelector('.increase');
-        const btnFiveUp = document.createElement("button");
-        btnFiveUp.setAttribute("class", "toSumm btn w-100");
-        btnFiveUp.setAttribute("id", "fiveUp");
-        const btnFiveUpImg = document.createElement("img");
-        btnFiveUpImg.setAttribute("src", "assets/img/fiveUpp.SVG");
+        const btnFiveUp = document.createElement('button');
+        btnFiveUp.setAttribute('class', 'toSumm btn w-100');
+        btnFiveUp.setAttribute('id', 'fiveUp');
+        const btnFiveUpImg = document.createElement('img');
+        btnFiveUpImg.setAttribute('src', 'assets/img/fiveUpp.SVG');
         btnFiveUp.appendChild(btnFiveUpImg);
         decrease.appendChild(btnFiveUp);
     }
 
+    // function btnOneDown() {
+    //     const decrease = document.querySelector('.decrease');
+    //     const btnOneDown = document.createElement('button');
+    //     btnOneDown.setAttribute('class', 'toSumm btn w-100');
+    //     btnOneDown.setAttribute('id', 'oneDown');
+    //     const btnOneDownImg = document.createElement('img');
+    //     btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
+    //     btnOneDown.appendChild(btnOneDownImg);
+    //     decrease.appendChild(btnOneDown);
+    // }
+
+    // function btnFiveDown() {
+    //     const decrease = document.querySelector('.decrease');
+    //     const btnFiveDown = document.createElement('button');
+    //     btnFiveDown.setAttribute('class', 'toSumm btn w-100');
+    //     btnFiveDown.setAttribute('id', 'fiveDown');
+    //     const btnFiveDownImg = document.createElement('img');
+    //     btnFiveDownImg.setAttribute('src', 'assets/img/fiveDownn.SVG');
+    //     btnFiveDown.appendChild(btnFiveDownImg);
+    //     decrease.appendChild(btnFiveDown);
+    // }
+
+    // function btnOneUp() {
+    //     const decrease = document.querySelector('.increase');
+    //     const btnOneUp = document.createElement('button');
+    //     btnOneUp.setAttribute('class', 'toSumm btn w-100');
+    //     btnOneUp.setAttribute('id', 'oneUp');
+    //     const btnOneUpImg = document.createElement('img');
+    //     btnOneUpImg.setAttribute('src', 'assets/img/Up.SVG');
+    //     btnOneUp.appendChild(btnOneUpImg);
+    //     decrease.appendChild(btnOneUp);
+    // }
+
+    // function btnFiveUp() {
+    //     const decrease = document.querySelector('.increase');
+    //     const btnFiveUp = document.createElement('button');
+    //     btnFiveUp.setAttribute('class', 'toSumm btn w-100');
+    //     btnFiveUp.setAttribute('id', 'fiveUp');
+    //     const btnFiveUpImg = document.createElement('img');
+    //     btnFiveUpImg.setAttribute('src', 'assets/img/fiveUpp.SVG');
+    //     btnFiveUp.appendChild(btnFiveUpImg);
+    //     decrease.appendChild(btnFiveUp);
+    // }
+
     function btnSave() {
         const secondLine = document.querySelector('.secondLine');
-        const divSave = document.createElement("div");
-        divSave.setAttribute("class", "toSumm options d-grid col-12");
-        divSave.setAttribute("id", "save");
-        const btnSave = document.createElement("button");
-        btnSave.setAttribute("class", "btn btn-primary");
+        const divSave = document.createElement('div');
+        divSave.setAttribute('class', 'toSumm options d-grid col-12');
+        divSave.setAttribute('id', 'save');
+        const btnSave = document.createElement('button');
+        btnSave.setAttribute('class', 'btn btn-primary');
         const btnSaveText = document.createTextNode('Save');
         btnSave.appendChild(btnSaveText);
         divSave.appendChild(btnSave)
@@ -217,11 +247,11 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function btnReset() {
         const secondLine = document.querySelector('.secondLine');
-        const divReset = document.createElement("div");
-        divReset.setAttribute("class", "toSumm options d-grid col-12");
-        divReset.setAttribute("id", "reset");
-        const btnReset = document.createElement("button");
-        btnReset.setAttribute("class", "btn btn-primary");
+        const divReset = document.createElement('div');
+        divReset.setAttribute('class', 'toSumm options d-grid col-12');
+        divReset.setAttribute('id', 'reset');
+        const btnReset = document.createElement('button');
+        btnReset.setAttribute('class', 'btn btn-primary');
         const btnResetText = document.createTextNode('Reset');
         btnReset.appendChild(btnResetText);
         divReset.appendChild(btnReset)
