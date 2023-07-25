@@ -198,7 +198,7 @@ window.addEventListener('DOMContentLoaded', function () {
         btnOneUp.setAttribute('class', 'toSumm btn w-100');
         btnOneUp.setAttribute('id', 'oneUp');
         const btnOneUpImg = document.createElement('img');
-        btnOneUpImg.setAttribute('src', 'assets/img/Up.SVG');
+        btnOneUpImg.setAttribute('src', 'assets/img/up.SVG');
         btnOneUp.appendChild(btnOneUpImg);
         decrease.appendChild(btnOneUp);
 
