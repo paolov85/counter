@@ -1,9 +1,91 @@
 window.addEventListener('DOMContentLoaded', function () {
 
+   
+    function btnOneDown() {
+        const decrease = document.querySelector('.decrease');
+        const btnOneDown = document.createElement("button");
+        btnOneDown.setAttribute("class", "toSumm btn w-100");
+        btnOneDown.setAttribute("id", "oneDown");
+        const btnOneDownImg = document.createElement("img");
+        btnOneDownImg.setAttribute("src", "assets/img/down.SVG");
+        btnOneDown.appendChild(btnOneDownImg);
+        decrease.appendChild(btnOneDown);
+    }
+
+    function btnFiveDown() {
+        const decrease = document.querySelector('.decrease');
+        const btnFiveDown = document.createElement("button");
+        btnFiveDown.setAttribute("class", "toSumm btn w-100");
+        btnFiveDown.setAttribute("id", "fiveDown");
+        const btnFiveDownImg = document.createElement("img");
+        btnFiveDownImg.setAttribute("src", "assets/img/fiveDownn.SVG");
+        btnFiveDown.appendChild(btnFiveDownImg);
+        decrease.appendChild(btnFiveDown);
+    }
+
+    function btnOneUp() {
+        const decrease = document.querySelector('.increase');
+        const btnOneUp = document.createElement("button");
+        btnOneUp.setAttribute("class", "toSumm btn w-100");
+        btnOneUp.setAttribute("id", "oneUp");
+        const btnOneUpImg = document.createElement("img");
+        btnOneUpImg.setAttribute("src", "assets/img/Up.SVG");
+        btnOneUp.appendChild(btnOneUpImg);
+        decrease.appendChild(btnOneUp);
+    }
+
+    function btnFiveUp() {
+        const decrease = document.querySelector('.increase');
+        const btnFiveUp = document.createElement("button");
+        btnFiveUp.setAttribute("class", "toSumm btn w-100");
+        btnFiveUp.setAttribute("id", "fiveUp");
+        const btnFiveUpImg = document.createElement("img");
+        btnFiveUpImg.setAttribute("src", "assets/img/fiveUpp.SVG");
+        btnFiveUp.appendChild(btnFiveUpImg);
+        decrease.appendChild(btnFiveUp);
+    }
+
+    function btnSave() {
+        const secondLine = document.querySelector('.secondLine');
+        const divSave = document.createElement("div");
+        divSave.setAttribute("class", "toSumm options d-grid col-12");
+        divSave.setAttribute("id", "save");
+        const btnSave = document.createElement("button");
+        btnSave.setAttribute("class", "btn btn-primary");
+        const btnSaveText = document.createTextNode('Save');
+        btnSave.appendChild(btnSaveText);
+        divSave.appendChild(btnSave)
+        secondLine.appendChild(divSave);
+    }
+
+    function btnReset() {
+        const secondLine = document.querySelector('.secondLine');
+        const divReset = document.createElement("div");
+        divReset.setAttribute("class", "toSumm options d-grid col-12");
+        divReset.setAttribute("id", "reset");
+        const btnReset = document.createElement("button");
+        btnReset.setAttribute("class", "btn btn-primary");
+        const btnResetText = document.createTextNode('Reset');
+        btnReset.appendChild(btnResetText);
+        divReset.appendChild(btnReset)
+        secondLine.appendChild(divReset);
+    }
+
+    btnOneDown();
+    btnFiveDown();
+    btnOneUp();
+    btnFiveUp();
+    btnSave();
+    btnReset();
+
+
+
+
+
     // seleziono gli elementi di cui avrò bisogno
-    let toSumm = document.getElementsByClassName('toSumm');
-    let display = document.getElementById('display');
-    let memo = document.getElementById('memo');
+    const toSumm = document.getElementsByClassName('toSumm');
+    const display = document.getElementById('display');
+    const memo = document.getElementById('memo');
     let result = 0;
     let ad = 0;
 
@@ -57,9 +139,9 @@ window.addEventListener('DOMContentLoaded', function () {
     function save() {
         if (!result == 0) {
             ad++;
-            let memoAdd = document.createElement("div");
+            const memoAdd = document.createElement("div");
             memoAdd.setAttribute("class", "memRow col-2");
-            let memoAddText = document.createTextNode(result);
+            const memoAddText = document.createTextNode(result);
             memo.appendChild(memoAdd);
             memoAdd.appendChild(memoAddText);
         }
@@ -68,11 +150,11 @@ window.addEventListener('DOMContentLoaded', function () {
     //la funzione 'createBtn' controlla che la var result sia popolata, in caso positivo, crea il button Fai la Somma con i relativi attributi e lo appende nella corretta posizione
     function createBtn() {
         if (!result == 0 && ad == 2) {
-            let summButton = document.createElement("button");
+            const summButton = document.createElement("button");
             summButton.setAttribute("class", "btn btn-primary");
             summButton.setAttribute("id", "totSumm");
             summButton.addEventListener('click', total);
-            let summButtonText = document.createTextNode('Fai la Somma');
+            const summButtonText = document.createTextNode('Fai la Somma');
             summButton.appendChild(summButtonText);
             memo.prepend(summButton);
         }
