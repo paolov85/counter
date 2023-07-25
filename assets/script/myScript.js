@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function () {
 
-    //la funzione 'structure' lancia tutte le funzioni dedivate alla costruzione degli elementi nella pagina html
+    //la funzione 'structure' è dedicate alla costruzione della pagina html
     structure ();
 
     // seleziono gli elementi di cui avrò bisogno
@@ -119,13 +119,36 @@ window.addEventListener('DOMContentLoaded', function () {
         ad = 0;
     }
 
-    //le seguenti funzioni sono dedicate alla costruzione dei pulsanti nella pagine html
+    //la funzione 'structure' lancia in sequenza tutte le funzioni dedicate alla costruzione dei singoli elementi html
     function structure() {
+        baseStr();
         divDisplay();
         divDecrease()
         divIncrease()
         btnSave();
         btnReset();
+    }
+    
+    //le seguenti funzioni sono dedicate alla costruzione dei pulsanti nella pagine html
+    function baseStr() {
+        const divMain = document.createElement('main');
+        divMain.setAttribute('class', 'container-sm d-flex flex-column align-items-center justify-content-center pb-5');
+        const divCounter = document.createElement('div');
+        divCounter.setAttribute('class', 'counter container w-100 my-5 py-4');
+        divCounter.style.height = "30vh";
+        const divFirstLine = document.createElement('div');
+        divFirstLine.setAttribute('class', 'firstLine row');
+        const divSecondLine = document.createElement('div');
+        divSecondLine.setAttribute('class', 'secondLine row');
+        const divThirdLine = document.createElement('div');
+        divThirdLine.setAttribute('class', 'thirdLine row m-3');
+        divThirdLine.setAttribute('id', 'memo');
+        divThirdLine.style.overflow = "auto";
+        document.body.appendChild(divMain);
+        divMain.appendChild(divCounter);
+        divCounter.appendChild(divFirstLine);
+        divCounter.appendChild(divSecondLine);
+        divCounter.appendChild(divThirdLine);
     }
 
     function divDisplay() {
@@ -187,50 +210,6 @@ window.addEventListener('DOMContentLoaded', function () {
         btnFiveUp.appendChild(btnFiveUpImg);
         decrease.appendChild(btnFiveUp);
     }
-
-    // function btnOneDown() {
-    //     const decrease = document.querySelector('.decrease');
-    //     const btnOneDown = document.createElement('button');
-    //     btnOneDown.setAttribute('class', 'toSumm btn w-100');
-    //     btnOneDown.setAttribute('id', 'oneDown');
-    //     const btnOneDownImg = document.createElement('img');
-    //     btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
-    //     btnOneDown.appendChild(btnOneDownImg);
-    //     decrease.appendChild(btnOneDown);
-    // }
-
-    // function btnFiveDown() {
-    //     const decrease = document.querySelector('.decrease');
-    //     const btnFiveDown = document.createElement('button');
-    //     btnFiveDown.setAttribute('class', 'toSumm btn w-100');
-    //     btnFiveDown.setAttribute('id', 'fiveDown');
-    //     const btnFiveDownImg = document.createElement('img');
-    //     btnFiveDownImg.setAttribute('src', 'assets/img/fiveDownn.SVG');
-    //     btnFiveDown.appendChild(btnFiveDownImg);
-    //     decrease.appendChild(btnFiveDown);
-    // }
-
-    // function btnOneUp() {
-    //     const decrease = document.querySelector('.increase');
-    //     const btnOneUp = document.createElement('button');
-    //     btnOneUp.setAttribute('class', 'toSumm btn w-100');
-    //     btnOneUp.setAttribute('id', 'oneUp');
-    //     const btnOneUpImg = document.createElement('img');
-    //     btnOneUpImg.setAttribute('src', 'assets/img/Up.SVG');
-    //     btnOneUp.appendChild(btnOneUpImg);
-    //     decrease.appendChild(btnOneUp);
-    // }
-
-    // function btnFiveUp() {
-    //     const decrease = document.querySelector('.increase');
-    //     const btnFiveUp = document.createElement('button');
-    //     btnFiveUp.setAttribute('class', 'toSumm btn w-100');
-    //     btnFiveUp.setAttribute('id', 'fiveUp');
-    //     const btnFiveUpImg = document.createElement('img');
-    //     btnFiveUpImg.setAttribute('src', 'assets/img/fiveUpp.SVG');
-    //     btnFiveUp.appendChild(btnFiveUpImg);
-    //     decrease.appendChild(btnFiveUp);
-    // }
 
     function btnSave() {
         const secondLine = document.querySelector('.secondLine');
