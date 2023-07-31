@@ -11,14 +11,22 @@ window.addEventListener('DOMContentLoaded', function () {
     let ad = 0;
 
     //tramite il ciclo for aggiungo un evento click ad ogni pulsante, che lancia la funzione 'clicked'
-    for (i = 0; i < toSumm.length; i++) {
-        toSumm[i].addEventListener('click', clicked)
-    }
+    // for (i = 0; i < toSumm.length; i++) {
+    //     toSumm[i].addEventListener('click', clicked)
+    // }
 
+    clickEl = document.querySelector('.counter');
+    console.log(clickEl);
     //la funzione 'clicked' ottiene l'id del pulsante cliccato ed in base ad esso assegna un diverso valore da aggiungere/sottrarre al totale, mostrandolo poi sul display
-    function clicked() {
+    
+    clickEl.onclick =function(event) {
+        console.log(event);
+        
+        target = event.target;
+        console.log(event.target);
 
-        toAddId = this.id
+        toAddId = target.id;
+        console.log(toAddId);
 
         switch (toAddId) {
 
