@@ -79,8 +79,8 @@ bg {
     height: 1.8rem;
 }
 
-#save button,
-#reset button {
+#save,
+#reset {
     background-color: var(--red);
     height: 100%;
     border-color: var(--dark-blue);

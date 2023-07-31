@@ -4,29 +4,17 @@ window.addEventListener('DOMContentLoaded', function () {
     structure ();
 
     // seleziono gli elementi di cui avrò bisogno
-    const toSumm = document.getElementsByClassName('toSumm');
     const display = document.getElementById('display');
     const memo = document.getElementById('memo');
     let result = 0;
     let ad = 0;
 
-    //tramite il ciclo for aggiungo un evento click ad ogni pulsante, che lancia la funzione 'clicked'
-    // for (i = 0; i < toSumm.length; i++) {
-    //     toSumm[i].addEventListener('click', clicked)
-    // }
-
+    //
     clickEl = document.querySelector('.counter');
-    console.log(clickEl);
-    //la funzione 'clicked' ottiene l'id del pulsante cliccato ed in base ad esso assegna un diverso valore da aggiungere/sottrarre al totale, mostrandolo poi sul display
     
     clickEl.onclick =function(event) {
-        console.log(event);
         
-        target = event.target;
-        console.log(event.target);
-
-        toAddId = target.id;
-        console.log(toAddId);
+        toAddId = event.target.closest('button').id;
 
         switch (toAddId) {
 
@@ -58,6 +46,11 @@ window.addEventListener('DOMContentLoaded', function () {
                 createBtn();
                 reset();
                 return;
+
+            case 'totSumm':
+                reset();
+                total();       
+                return;                                                                                  
         };
 
         result += toAdd;
@@ -82,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function () {
             const summButton = document.createElement('button');
             summButton.setAttribute('class', 'btn btn-primary');
             summButton.setAttribute('id', 'totSumm');
-            summButton.addEventListener('click', total);
+            // summButton.addEventListener('click', total);
             const summButtonText = document.createTextNode('Fai la Somma');
             summButton.appendChild(summButtonText);
             memo.prepend(summButton);
@@ -104,8 +97,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     //la funzione 'displayInner' è dedicata a visualizzare il risultato nel display dell'applicazione
-    function displayInner(result) {
-        display.innerHTML = `<p>${result}</p>`;
+    function displayInner(disp) {
+        display.innerHTML = `<p>${disp}</p>`;
     }
 
     //la funzione 'reset' azzera il display dell'applicazione
@@ -223,9 +216,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const secondLine = document.querySelector('.secondLine');
         const divSave = document.createElement('div');
         divSave.setAttribute('class', 'toSumm options d-grid col-12');
-        divSave.setAttribute('id', 'save');
         const btnSave = document.createElement('button');
         btnSave.setAttribute('class', 'btn btn-primary');
+        btnSave.setAttribute('id', 'save');
         const btnSaveText = document.createTextNode('Save');
         btnSave.appendChild(btnSaveText);
         divSave.appendChild(btnSave)
@@ -236,9 +229,9 @@ window.addEventListener('DOMContentLoaded', function () {
         const secondLine = document.querySelector('.secondLine');
         const divReset = document.createElement('div');
         divReset.setAttribute('class', 'toSumm options d-grid col-12');
-        divReset.setAttribute('id', 'reset');
         const btnReset = document.createElement('button');
         btnReset.setAttribute('class', 'btn btn-primary');
+        btnReset.setAttribute('id', 'reset');
         const btnResetText = document.createTextNode('Reset');
         btnReset.appendChild(btnResetText);
         divReset.appendChild(btnReset)
