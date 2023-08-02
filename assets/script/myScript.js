@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded', function () {
     //
     clickEl = document.querySelector('.counter');
     
-    clickEl.onclick = function(event) {
+    clickEl.onclick = (event) => {
         let toAdd;
         let toAddId;
         target = event.target.closest('button');
@@ -166,50 +166,48 @@ window.addEventListener('DOMContentLoaded', function () {
         firstLine.appendChild(divDisplay);
     }
 
-    // function divDeIncrease() {
-    //     const firstLine = document.querySelector('.firstLine');
-    //     const divDecrease = document.createElement('div');
-    //     divDecrease.setAttribute('class', 'decrease col-6 col-md-3 order-md-1');
-    //     firstLine.appendChild(divDecrease);
-
-    //     const decrease = document.querySelector('.decrease');
-    //     const btnOneDown = document.createElement('button');
-    //     btnOneDown.setAttribute('class', 'toSumm btn w-100');
-    //     btnOneDown.setAttribute('id', 'oneDown');
-    //     const btnOneDownImg = document.createElement('img');
-    //     btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
-    //     btnOneDown.appendChild(btnOneDownImg);
-    //     decrease.appendChild(btnOneDown);
-        
-    //     const btnFiveDown = document.createElement('button');
-    //     btnFiveDown.setAttribute('class', 'toSumm btn w-100');
-    //     btnFiveDown.setAttribute('id', 'fiveDown');
-    //     const btnFiveDownImg = document.createElement('img');
-    //     btnFiveDownImg.setAttribute('src', 'assets/img/fiveDownn.SVG');
-    //     btnFiveDown.appendChild(btnFiveDownImg);
-    //     decrease.appendChild(btnFiveDown);
-    // }
+    function createElementWithAttibutes(tagName, attributes) {
+        const element = document.createElement(tagName);
+        for (const [key, value] of Object.entries(attributes)) {
+            element.setAttribute(key, value);
+        }
+        return element;
+    }
 
     function divDecrease() {
+
+        var attributes = {
+            class: 'decrease col-6 col-md-3 order-md-1',
+        }
+        const divDecrease = createElementWithAttibutes('div', attributes);
         const firstLine = document.querySelector('.firstLine');
-        const divDecrease = document.createElement('div');
-        divDecrease.setAttribute('class', 'decrease col-6 col-md-3 order-md-1');
         firstLine.appendChild(divDecrease);
 
+        var attributes = {
+            id: 'oneDown',
+            class: 'toSumm btn w-100',
+        }
+        const btnOneDown = createElementWithAttibutes('button', attributes);
+
+        var attributes = {
+            src: 'assets/img/down.SVG',
+        }
+        const btnOneDownImg = createElementWithAttibutes('img', attributes);
         const decrease = document.querySelector('.decrease');
-        const btnOneDown = document.createElement('button');
-        btnOneDown.setAttribute('class', 'toSumm btn w-100');
-        btnOneDown.setAttribute('id', 'oneDown');
-        const btnOneDownImg = document.createElement('img');
-        btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
         btnOneDown.appendChild(btnOneDownImg);
         decrease.appendChild(btnOneDown);
-        
-        const btnFiveDown = document.createElement('button');
-        btnFiveDown.setAttribute('class', 'toSumm btn w-100');
-        btnFiveDown.setAttribute('id', 'fiveDown');
-        const btnFiveDownImg = document.createElement('img');
-        btnFiveDownImg.setAttribute('src', 'assets/img/fiveDownn.SVG');
+
+
+        var attributes = {
+            id: 'fiveDown',
+            class: 'toSumm btn w-100',
+        }
+        const btnFiveDown = createElementWithAttibutes('button', attributes);
+
+        var attributes = {
+            src: 'assets/img/fiveDownn.SVG',
+        }
+        const btnFiveDownImg = createElementWithAttibutes('img', attributes);
         btnFiveDown.appendChild(btnFiveDownImg);
         decrease.appendChild(btnFiveDown);
     }
