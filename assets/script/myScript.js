@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 
     //la funzione 'structure' è dedicate alla costruzione della pagina html
-    structure ();
+    structure();
 
     // seleziono gli elementi di cui avrò bisogno
     const toSumm = document.getElementsByClassName('toSumm');
@@ -121,18 +121,25 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //la funzione 'structure' lancia in sequenza tutte le funzioni dedicate alla costruzione dei singoli elementi html
     function structure() {
-        baseStr();
-        divDisplay();
+        createNewElement('main', 'body', null, ['container-sm', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-center', 'pb-5'], null)
+        createNewElement('div', 'main', null, ['counter', 'container', 'w-100', 'my-5', 'py-4'], null);
+        // divCounter.style.height = "30vh";
+        createNewElement('div', '.counter', null, ['firstLine', 'row'], null);
+        createNewElement('div', '.counter', null, ['secondLine', 'row'], null);
+        createNewElement('div', '.counter', 'memo', ['thirdtLine', 'row', 'm-3'], null);
+        // divThirdLine.style.overflow = "auto";
+        createNewElement('div', '.firstLine', 'display', ['col-12', 'col-md-6', 'order-md-2', 'text-center', 'p-3'], null);
+        createNewElement('p', '#display', null, null, '0');
         divDecrease()
         divIncrease()
         btnSave();
         btnReset();
     }
-    
+
 
     function createNewElement(elTag, elParent, elId, elClasses, elContent) {
         const element = document.createElement(elTag)
-        
+
         if (elId) {
             element.setAttribute('id', elId)
         }
@@ -140,50 +147,25 @@ window.addEventListener('DOMContentLoaded', function () {
         if (elClasses) {
             element.classList.add(...elClasses);
         }
-        
+
         if (elContent) {
             element.innerHTML = elContent;
         }
 
-        selected = document.querySelector(elParent)
-        selected.append(element);  
+        if (elParent === 'body') {
+            document.body.appendChild(element)
+        } else {
+            selected = document.querySelector(elParent)
+            selected.appendChild(element);
+        }
     }
 
 
 
 
     //le seguenti funzioni sono dedicate alla costruzione dei pulsanti nella pagine html
-    function baseStr() {
-        const divMain = document.createElement('main');
-        divMain.setAttribute('class', 'container-sm d-flex flex-column align-items-center justify-content-center pb-5');
-        document.body.appendChild(divMain);
-
-        const divCounter = document.createElement('div');
-        divCounter.setAttribute('class', 'counter container w-100 my-5 py-4');
-        divCounter.style.height = "30vh";
-        divMain.appendChild(divCounter);
-
-        const divFirstLine = document.createElement('div');
-        divFirstLine.setAttribute('class', 'firstLine row');
-        divCounter.appendChild(divFirstLine);
-
-        const divSecondLine = document.createElement('div');
-        divSecondLine.setAttribute('class', 'secondLine row');
-        divCounter.appendChild(divSecondLine);
-
-        const divThirdLine = document.createElement('div');
-        divThirdLine.setAttribute('class', 'thirdLine row m-3');
-        divThirdLine.setAttribute('id', 'memo');
-        divThirdLine.style.overflow = "auto";
-        divCounter.appendChild(divThirdLine);
-        
-
-    }
-    //OK
-    function divDisplay() {
-        createNewElement('div', '.firstLine', 'display', ['col-12', 'col-md-6', 'order-md-2', 'text-center', 'p-3'], null);
-        createNewElement('p', '#display', null, null, '0');
-    }
+    //(elTag, elParent, elId, elClasses, elContent)
+   
 
     function divDecrease() {
         const firstLine = document.querySelector('.firstLine');
@@ -199,7 +181,7 @@ window.addEventListener('DOMContentLoaded', function () {
         btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
         btnOneDown.appendChild(btnOneDownImg);
         decrease.appendChild(btnOneDown);
-        
+
         const btnFiveDown = document.createElement('button');
         btnFiveDown.setAttribute('class', 'toSumm btn w-100');
         btnFiveDown.setAttribute('id', 'fiveDown');
