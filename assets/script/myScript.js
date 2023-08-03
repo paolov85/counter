@@ -138,14 +138,15 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (elClasses) {
-            element.classList.add(elClasses);
+            element.classList.add(...elClasses);
         }
         
         if (elContent) {
             element.innerHTML = elContent;
         }
 
-        elParent.append(element);  
+        selected = document.querySelector(elParent)
+        selected.append(element);  
     }
 
 
@@ -155,36 +156,33 @@ window.addEventListener('DOMContentLoaded', function () {
     function baseStr() {
         const divMain = document.createElement('main');
         divMain.setAttribute('class', 'container-sm d-flex flex-column align-items-center justify-content-center pb-5');
+        document.body.appendChild(divMain);
+
         const divCounter = document.createElement('div');
         divCounter.setAttribute('class', 'counter container w-100 my-5 py-4');
         divCounter.style.height = "30vh";
+        divMain.appendChild(divCounter);
+
         const divFirstLine = document.createElement('div');
         divFirstLine.setAttribute('class', 'firstLine row');
+        divCounter.appendChild(divFirstLine);
+
         const divSecondLine = document.createElement('div');
         divSecondLine.setAttribute('class', 'secondLine row');
+        divCounter.appendChild(divSecondLine);
+
         const divThirdLine = document.createElement('div');
         divThirdLine.setAttribute('class', 'thirdLine row m-3');
         divThirdLine.setAttribute('id', 'memo');
         divThirdLine.style.overflow = "auto";
-        document.body.appendChild(divMain);
-        divMain.appendChild(divCounter);
-        divCounter.appendChild(divFirstLine);
-        divCounter.appendChild(divSecondLine);
         divCounter.appendChild(divThirdLine);
+        
+
     }
-
+    //OK
     function divDisplay() {
-
-        const firstLine = document.querySelector('.firstLine');
-        createNewElement('div', firstLine, 'display', 'col-12 col-md-6 order-md-2 text-center p-3', null)
-        // const divDisplay = document.createElement('div');
-        // divDisplay.setAttribute('id', 'display');
-        // divDisplay.setAttribute('class', 'col-12 col-md-6 order-md-2 text-center p-3');
-        // const pDisplay = document.createElement('p');
-        // const pDisplayText = document.createTextNode(0);
-        // pDisplay.appendChild(pDisplayText);
-        // divDisplay.appendChild(pDisplay);
-        // firstLine.appendChild(divDisplay);
+        createNewElement('div', '.firstLine', 'display', ['col-12', 'col-md-6', 'order-md-2', 'text-center', 'p-3'], null);
+        createNewElement('p', '#display', null, null, '0');
     }
 
     function divDecrease() {
