@@ -129,6 +129,28 @@ window.addEventListener('DOMContentLoaded', function () {
         btnReset();
     }
     
+
+    function createNewElement(elTag, elParent, elId, elClasses, elContent) {
+        const element = document.createElement(elTag)
+        
+        if (elId) {
+            element.setAttribute('id', elId)
+        }
+
+        if (elClasses) {
+            element.classList.add(elClasses);
+        }
+        
+        if (elContent) {
+            element.innerHTML = elContent;
+        }
+
+        elParent.append(element);  
+    }
+
+
+
+
     //le seguenti funzioni sono dedicate alla costruzione dei pulsanti nella pagine html
     function baseStr() {
         const divMain = document.createElement('main');
@@ -152,15 +174,17 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function divDisplay() {
+
         const firstLine = document.querySelector('.firstLine');
-        const divDisplay = document.createElement('div');
-        divDisplay.setAttribute('id', 'display');
-        divDisplay.setAttribute('class', 'col-12 col-md-6 order-md-2 text-center p-3');
-        const pDisplay = document.createElement('p');
-        const pDisplayText = document.createTextNode(0);
-        pDisplay.appendChild(pDisplayText);
-        divDisplay.appendChild(pDisplay);
-        firstLine.appendChild(divDisplay);
+        createNewElement('div', firstLine, 'display', 'col-12 col-md-6 order-md-2 text-center p-3', null)
+        // const divDisplay = document.createElement('div');
+        // divDisplay.setAttribute('id', 'display');
+        // divDisplay.setAttribute('class', 'col-12 col-md-6 order-md-2 text-center p-3');
+        // const pDisplay = document.createElement('p');
+        // const pDisplayText = document.createTextNode(0);
+        // pDisplay.appendChild(pDisplayText);
+        // divDisplay.appendChild(pDisplay);
+        // firstLine.appendChild(divDisplay);
     }
 
     function divDecrease() {
