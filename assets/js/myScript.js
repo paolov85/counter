@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', function () {
 
     //la funzione 'structure' è dedicate alla costruzione della pagina html
-    structure ();
+    structure();
 
     // seleziono gli elementi di cui avrò bisogno
     const display = document.getElementById('display');
@@ -10,9 +10,9 @@ window.addEventListener('DOMContentLoaded', function () {
     let ad = 0;
 
     //
-    clickEl = document.querySelector('.counter');
-    
-    clickEl.onclick = (event) => {
+    clickedEl = document.querySelector('.counter');
+
+    clickedEl.onclick = (event) => {
         let toAdd;
         let toAddId;
         target = event.target.closest('button');
@@ -51,8 +51,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
             case 'totSumm':
                 reset();
-                total();       
-                return;                                                                                  
+                total();
+                return;
         };
 
         result += toAdd;
@@ -131,22 +131,34 @@ window.addEventListener('DOMContentLoaded', function () {
         btnSave();
         btnReset();
     }
-    
+
     //le seguenti funzioni sono dedicate alla costruzione dei pulsanti nella pagine html
     function baseStr() {
-        const divMain = document.createElement('main');
-        divMain.setAttribute('class', 'container-sm d-flex flex-column align-items-center justify-content-center pb-5');
-        const divCounter = document.createElement('div');
-        divCounter.setAttribute('class', 'counter container w-100 my-5 py-4');
-        divCounter.style.height = "30vh";
-        const divFirstLine = document.createElement('div');
-        divFirstLine.setAttribute('class', 'firstLine row');
+        
+        var attributes = {
+            class: 'container-sm d-flex flex-column align-items-center justify-content-center pb-5',
+        }
+        const divMain = createElementWithAttibutes('main', attributes);
+        
+        var attributes = {
+            class: 'counter container w-100 my-5 py-4',
+            style: 'height: 30vh'
+        }
+        const divCounter = createElementWithAttibutes('div', attributes);
+      
+        var attributes = {
+            class: 'firstLine row',
+        }
+        const divFirstLine = createElementWithAttibutes('div', attributes);
+        
         const divSecondLine = document.createElement('div');
         divSecondLine.setAttribute('class', 'secondLine row');
+        
         const divThirdLine = document.createElement('div');
         divThirdLine.setAttribute('class', 'thirdLine row m-3');
         divThirdLine.setAttribute('id', 'memo');
         divThirdLine.style.overflow = "auto";
+        
         document.body.appendChild(divMain);
         divMain.appendChild(divCounter);
         divCounter.appendChild(divFirstLine);
@@ -155,15 +167,16 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 
     function divDisplay() {
-        const firstLine = document.querySelector('.firstLine');
-        const divDisplay = document.createElement('div');
-        divDisplay.setAttribute('id', 'display');
-        divDisplay.setAttribute('class', 'col-12 col-md-6 order-md-2 text-center p-3');
-        const pDisplay = document.createElement('p');
+        var attributes = {
+            id: 'display',
+            class: 'col-12 col-md-6 order-md-2 text-center p-3',
+        }
+        const divDisplay = createElementWithAttibutes('div', attributes);
+        const pDisplay = createElementWithAttibutes('div', '');
         const pDisplayText = document.createTextNode(0);
         pDisplay.appendChild(pDisplayText);
         divDisplay.appendChild(pDisplay);
-        firstLine.appendChild(divDisplay);
+        appendElement('.firstLine', divDisplay)
     }
 
     function createElementWithAttibutes(tagName, attributes) {
@@ -174,14 +187,19 @@ window.addEventListener('DOMContentLoaded', function () {
         return element;
     }
 
+    function appendElement(selector, toAppend) {
+        const selected = document.querySelector(selector);
+        selected.appendChild(toAppend);
+    }
+
+
     function divDecrease() {
 
         var attributes = {
             class: 'decrease col-6 col-md-3 order-md-1',
         }
         const divDecrease = createElementWithAttibutes('div', attributes);
-        const firstLine = document.querySelector('.firstLine');
-        firstLine.appendChild(divDecrease);
+        appendElement('.firstLine', divDecrease)
 
         var attributes = {
             id: 'oneDown',
@@ -193,10 +211,9 @@ window.addEventListener('DOMContentLoaded', function () {
             src: 'assets/img/down.SVG',
         }
         const btnOneDownImg = createElementWithAttibutes('img', attributes);
-        const decrease = document.querySelector('.decrease');
-        btnOneDown.appendChild(btnOneDownImg);
-        decrease.appendChild(btnOneDown);
 
+        btnOneDown.appendChild(btnOneDownImg);
+        appendElement('.decrease', btnOneDown)
 
         var attributes = {
             id: 'fiveDown',
@@ -208,8 +225,9 @@ window.addEventListener('DOMContentLoaded', function () {
             src: 'assets/img/fiveDownn.SVG',
         }
         const btnFiveDownImg = createElementWithAttibutes('img', attributes);
+
         btnFiveDown.appendChild(btnFiveDownImg);
-        decrease.appendChild(btnFiveDown);
+        appendElement('.decrease', btnFiveDown)
     }
 
     function divIncrease() {
