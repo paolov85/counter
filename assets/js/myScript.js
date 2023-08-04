@@ -2,48 +2,46 @@ window.addEventListener('DOMContentLoaded', function () {
 
     //creazione struttura
     //main div
-    createNewElement('main', 'body', null, ['container-sm', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-center', 'pb-5'], null)
+    createNewElement('main', 'body', null, ['container-sm', 'd-flex', 'flex-column', 'align-items-center', 'justify-content-center', 'pb-5'])
     //counter div
-    createNewElement('div', 'main', null, ['counter', 'container', 'w-100', 'my-5', 'py-4'], null);
-        //divCounter.style.height = "30vh";
+    createNewElement('div', 'main', null, ['counter', 'container', 'w-100', 'my-5', 'py-4']);
     //first, second and third lines div
-    createNewElement('div', '.counter', null, ['firstLine', 'row'], null);
-    createNewElement('div', '.counter', null, ['secondLine', 'row'], null);
-    createNewElement('div', '.counter', 'memo', ['thirdLine', 'row', 'm-3'], null);
-        //divThirdLine.style.overflow = "auto";
+    createNewElement('div', '.counter', null, ['firstLine', 'row']);
+    createNewElement('div', '.counter', null, ['secondLine', 'row']);
+    createNewElement('div', '.counter', 'memo', ['thirdLine', 'row', 'm-3']);
     //display div
-    createNewElement('div', '.firstLine', 'display', ['col-12', 'col-md-6', 'order-md-2', 'text-center', 'p-3'], null);
+    createNewElement('div', '.firstLine', 'display', ['col-12', 'col-md-6', 'order-md-2', 'text-center', 'p-3']);
     createNewElement('p', '#display', null, null, '0');
-    //decrease div
-    createNewElement('div', '.firstLine', null, ['decrease', 'col-6', 'col-md-3', 'order-md-1'], null);
-    createNewElement('button', '.decrease', 'oneDown', ['toSumm', 'btn', 'w-100'], null);
-    createNewElement('img', '#oneDown', null, null, null);
-        //btnOneDownImg.setAttribute('src', 'assets/img/down.SVG');
-    createNewElement('button', '.decrease', 'fiveDown', ['toSumm', 'btn', 'w-100'], null);
-    createNewElement('img', '#fiveDown', null, null, null);
-        //btnOneDownImg.setAttribute('src', 'assets/img/fiveDownn.SVG');
-    //increase div
-    createNewElement('div', '.firstLine', null, ['increase', 'col-6', 'col-md-3', 'order-md-3'], null);
-    createNewElement('button', '.increase', 'oneUp', ['toSumm', 'btn', 'w-100'], null);
-    createNewElement('img', '#oneUp', null, null, null);
-        //btnOneUpImg.setAttribute('src', 'assets/img/up.SVG');
-    createNewElement('button', '.increase', 'fiveUp', ['toSumm', 'btn', 'w-100'], null);
-    createNewElement('img', '#fiveUp', null, null, null);
-        //btnOneDownImg.setAttribute('src', 'assets/img/fiveUpp.SVG');
+    //decrease div e button
+    createNewElement('div', '.firstLine', null, ['decrease', 'col-6', 'col-md-3', 'order-md-1']);
+    createNewElement('button', '.decrease', 'oneDown', ['toSumm', 'btn', 'w-100']);
+    createNewElement('img', '#oneDown', 'oneDownImg');
+    document.getElementById('oneDownImg').src = 'assets/img/down.SVG';
+    createNewElement('button', '.decrease', 'fiveDown', ['toSumm', 'btn', 'w-100']);
+    createNewElement('img', '#fiveDown', 'fiveDownImg');
+    document.getElementById('fiveDownImg').src = 'assets/img/fiveDownn.SVG';
+    //increase div e button
+    createNewElement('div', '.firstLine', null, ['increase', 'col-6', 'col-md-3', 'order-md-3']);
+    createNewElement('button', '.increase', 'oneUp', ['toSumm', 'btn', 'w-100']);
+    createNewElement('img', '#oneUp', 'oneUpImg');
+    document.getElementById('oneUpImg').src ='assets/img/up.SVG';
+    createNewElement('button', '.increase', 'fiveUp', ['toSumm', 'btn', 'w-100']);
+    createNewElement('img', '#fiveUp', 'fiveUpImg');
+    document.getElementById('fiveUpImg').src ='assets/img/fiveUpp.SVG';
     //save button
     createNewElement('div', '.secondLine', null, ['saveDiv', 'toSumm', 'options', 'd-grid', 'col-12']);
     createNewElement('button', '.saveDiv', 'save', ['btn', 'btn-primary'], 'Save');
     //reset button
-    createNewElement('div', '.secondLine', null, ['resetDiv', 'toSumm', 'options', 'd-grid', 'col-12'], null);
+    createNewElement('div', '.secondLine', null, ['resetDiv', 'toSumm', 'options', 'd-grid', 'col-12']);
     createNewElement('button', '.resetDiv', 'reset', ['btn', 'btn-primary'], 'Reset');
 
-    //seleziono gli elementi di cui avrò bisogno
+    //
     const display = document.getElementById('display');
     const memo = document.getElementById('memo');
     let result = 0;
     let ad = 0;
 
-    //il listener aggiunto al div wrapper ha il compito si selezionare, in base al pulsante che viene premuto, quale sarà il valore var toAdd e la consueguente funzionalità da lanciare
+    //il listener aggiunto al div wrapper ha il compito di selezionare, in base al pulsante che viene premuto, quale sarà il valore da assegnare alla var toAdd e la conseguente funzionalità da lanciare
     clickedEl = document.querySelector('.counter');
 
     clickedEl.onclick = (event) => {
@@ -93,15 +91,16 @@ window.addEventListener('DOMContentLoaded', function () {
         displayInner(result);
     }
 
-    //la funzione 'save' verifica che la var result sia popolata, in caso positivo crea un div nel quale salvare il valore che attualmetne è visualizzato sul display e lo appende nella corretta posizione
+    //la funzione 'save' verifica che la var result sia popolata, in caso positivo crea un div nel quale salvare il valore attualmente visualizzato sul display e lo appende nella corretta posizione
     function save() {
         if (!result == 0) {
             ad++;
-            const memoAdd = document.createElement('div');
-            memoAdd.setAttribute('class', 'memRow col-2');
-            const memoAddText = document.createTextNode(result);
-            memo.appendChild(memoAdd);
-            memoAdd.appendChild(memoAddText);
+            createNewElement('div', '.thirdLine', null, ['memRow', 'col-2'], result);
+            // const memoAdd = document.createElement('div');
+            // memoAdd.setAttribute('class', 'memRow col-2');
+            // const memoAddText = document.createTextNode(result);
+            // memo.appendChild(memoAdd);
+            // memoAdd.appendChild(memoAddText);
         }
     }
 
