@@ -24,10 +24,10 @@ window.addEventListener('DOMContentLoaded', function () {
     createNewElement('div', '.firstLine', null, ['increase', 'col-6', 'col-md-3', 'order-md-3']);
     createNewElement('button', '.increase', 'oneUp', ['toSumm', 'btn', 'w-100']);
     createNewElement('img', '#oneUp', 'oneUpImg');
-    document.getElementById('oneUpImg').src ='assets/img/up.SVG';
+    document.getElementById('oneUpImg').src = 'assets/img/up.SVG';
     createNewElement('button', '.increase', 'fiveUp', ['toSumm', 'btn', 'w-100']);
     createNewElement('img', '#fiveUp', 'fiveUpImg');
-    document.getElementById('fiveUpImg').src ='assets/img/fiveUpp.SVG';
+    document.getElementById('fiveUpImg').src = 'assets/img/fiveUpp.SVG';
     //save button
     createNewElement('div', '.secondLine', null, ['saveDiv', 'toSumm', 'options', 'd-grid', 'col-12']);
     createNewElement('button', '.saveDiv', 'save', ['btn', 'btn-primary'], 'Save');
@@ -35,13 +35,10 @@ window.addEventListener('DOMContentLoaded', function () {
     createNewElement('div', '.secondLine', null, ['resetDiv', 'toSumm', 'options', 'd-grid', 'col-12']);
     createNewElement('button', '.resetDiv', 'reset', ['btn', 'btn-primary'], 'Reset');
 
-    //
-    const display = document.getElementById('display');
-    const memo = document.getElementById('memo');
+    //aggiungo un listener al div wrapper che ha il compito di selezionare, in base al pulsante cliccato, quale sarà il valore da assegnare alla var toAdd e la conseguente funzionalità da lanciare
     let result = 0;
     let ad = 0;
 
-    //il listener aggiunto al div wrapper ha il compito di selezionare, in base al pulsante che viene premuto, quale sarà il valore da assegnare alla var toAdd e la conseguente funzionalità da lanciare
     clickedEl = document.querySelector('.counter');
 
     clickedEl.onclick = (event) => {
@@ -71,19 +68,37 @@ window.addEventListener('DOMContentLoaded', function () {
             case 'reset':
                 ad = 0;
                 reset();
-                listDelete();
-                deleteBtn();
+                clean();
                 return;
 
             case 'save':
-                save();
-                createTotBtn();
+                if (!result == 0) {
+                    ad++;
+                    createNewElement('div', '.thirdLine', null, ['memRow', 'col-2'], result);
+                }
+                if (!result == 0 && ad == 2) {
+                    const memo = document.getElementById('memo');
+                    const summButton = document.createElement('button');
+                    summButton.setAttribute('class', 'btn btn-primary');
+                    summButton.setAttribute('id', 'totSumm');
+                    // summButton.addEventListener('click', total);
+                    const summButtonText = document.createTextNode('Fai la Somma');
+                    summButton.appendChild(summButtonText);
+                    memo.prepend(summButton);
+                }
                 reset();
                 return;
 
             case 'totSumm':
                 reset();
-                total();
+                let totalNum = 0;
+                toTotal = Array.from(document.getElementsByClassName('memRow'));
+                for (i = 0; i < toTotal.length; i++) {
+                    totalNum = totalNum + Number(toTotal[i].innerText);
+                }
+                displayInner(totalNum);
+                clean();
+                ad = 0;
                 return;
         };
 
@@ -91,73 +106,7 @@ window.addEventListener('DOMContentLoaded', function () {
         displayInner(result);
     }
 
-    //la funzione 'save' verifica che la var result sia popolata, in caso positivo crea un div nel quale salvare il valore attualmente visualizzato sul display e lo appende nella corretta posizione
-    function save() {
-        if (!result == 0) {
-            ad++;
-            createNewElement('div', '.thirdLine', null, ['memRow', 'col-2'], result);
-            // const memoAdd = document.createElement('div');
-            // memoAdd.setAttribute('class', 'memRow col-2');
-            // const memoAddText = document.createTextNode(result);
-            // memo.appendChild(memoAdd);
-            // memoAdd.appendChild(memoAddText);
-        }
-    }
-
-    //la funzione 'createBtn' controlla che la var result sia popolata, in caso positivo, crea il button Fai la Somma con i relativi attributi e lo appende nella corretta posizione
-    function createTotBtn() {
-        if (!result == 0 && ad == 2) {
-            const summButton = document.createElement('button');
-            summButton.setAttribute('class', 'btn btn-primary');
-            summButton.setAttribute('id', 'totSumm');
-            // summButton.addEventListener('click', total);
-            const summButtonText = document.createTextNode('Fai la Somma');
-            summButton.appendChild(summButtonText);
-            memo.prepend(summButton);
-        }
-    }
-
-    //la funzione 'listDelete' elimina gli elementi salvati, dopo averli inseriti in un array 
-    function listDelete() {
-        toDelete = Array.from(document.getElementsByClassName('memRow'));
-        for (i = 0; i < toDelete.length; i++) {
-            toDelete[i].remove();
-        }
-    }
-
-    //la funzione 'deleteBtn' elimina il pulsante Fai la Somma
-    function deleteBtn() {
-        toDeleteBtn = document.getElementById('totSumm');
-        toDeleteBtn ? toDeleteBtn.remove() : null;
-    }
-
-    //la funzione 'displayInner' è dedicata a visualizzare il risultato nel display dell'applicazione
-    function displayInner(disp) {
-        display.innerHTML = `<p>${disp}</p>`;
-    }
-
-    //la funzione 'reset' azzera il display dell'applicazione
-    function reset() {
-        result = 0;
-        displayInner(result);
-    }
-
-    //la funzione 'total' popola un array con tutti i valori salvati, li somma e visualizza il risultato nel display dell'app, per poi cancellare suddetti valori ed il relativo pulsante Fai la Somma
-    function total() {
-        let totalNum = 0;
-        toTotal = Array.from(document.getElementsByClassName('memRow'));
-        for (i = 0; i < toTotal.length; i++) {
-            totalNum = totalNum + Number(toTotal[i].innerText);
-        }
-        displayInner(totalNum);
-        listDelete();
-        deleteBtn();
-        ad = 0;
-    }
-
-
-
-    //crea un nuovo elemento e lo appende al genitore
+    //la funzione 'createNewElement' crea un nuovo elemento e lo appende al genitore
     //(tag, selettore padre, id, classi, contenuto)
     function createNewElement(elTag, elParent, elId, elClasses, elContent) {
         const element = document.createElement(elTag)
@@ -182,4 +131,25 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    //la funzione 'displayInner' è dedicata a visualizzare il risultato nel display dell'applicazione
+    function displayInner(disp) {
+        const display = document.getElementById('display');
+        display.innerHTML = `<p>${disp}</p>`;
+    }
+
+    //la funzione 'reset' azzera il display dell'applicazione
+    function reset() {
+        result = 0;
+        displayInner(result);
+    }
+
+    //la funzione 'clean' elimina gli elementi salvati ed elimina il pulsante di somma 
+    function clean() {
+        toDelete = Array.from(document.getElementsByClassName('memRow'));
+        for (i = 0; i < toDelete.length; i++) {
+            toDelete[i].remove();
+        }
+        toDeleteBtn = document.getElementById('totSumm');
+        toDeleteBtn ? toDeleteBtn.remove() : null;
+    } 
 });
