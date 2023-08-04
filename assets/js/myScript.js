@@ -143,7 +143,7 @@ window.addEventListener('DOMContentLoaded', function () {
         displayInner(result);
     }
 
-    //la funzione 'clean' elimina gli elementi salvati ed elimina il pulsante di somma 
+    //la funzione 'clean' elimina gli elementi salvati in memoria ed il pulsante di somma 
     function clean() {
         toDelete = Array.from(document.getElementsByClassName('memRow'));
         for (i = 0; i < toDelete.length; i++) {
